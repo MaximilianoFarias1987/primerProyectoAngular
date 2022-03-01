@@ -1,0 +1,99 @@
+<section>
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    #f="ngForm"
+    (ngSubmit)="registrarUsuario(f)"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field>
+      <mat-label>Ingrese Nombre</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Maximiliano"
+        ngModel
+        name="nombre"
+        required
+        #nombreInput="ngModel"
+      />
+      <mat-error *ngIf="nombreInput.hasError('required')"
+        >El nombre no puede estar vacio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese Apellido</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="Farias"
+        ngModel
+        name="apellido"
+        required
+        #apellidoInput="ngModel"
+      />
+      <mat-error *ngIf="apellidoInput.hasError('required')"
+        >El apellido no puede estar vacio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese Username</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="maximilianocba07"
+        ngModel
+        name="username"
+        required
+        #usernameInput="ngModel"
+      />
+      <mat-error *ngIf="usernameInput.hasError('required')"
+        >El username no puede estar vacio</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Ingrese Email</mat-label>
+      <input
+        type="email"
+        matInput
+        placeholder="ejemplo@ejemplo.com"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel"
+      />
+      <mat-error *ngIf="emailInput.hasError('required')"
+        >El email no puede estar vacio</mat-error
+      >
+      <mat-error *ngIf="!emailInput.hasError('required')"
+        >El email es invalido</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field hintLabel="El password debe tener 7 caracteres">
+      <mat-label>Ingrese password</mat-label>
+      <input
+        type="password"
+        matInput
+        placeholder="password"
+        ngModel
+        name="password"
+        required
+        minlength="7"
+        #passInput="ngModel"
+      />
+      <mat-error *ngIf="passInput.hasError('required')"
+        >El email no puede estar vacio</mat-error
+      >
+      <mat-error *ngIf="!passInput.hasError('required')"
+        >El password debe tener al menos 7 caracteres</mat-error
+      >
+    </mat-form-field>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Guardar</button>
+  </form>
+</section>
